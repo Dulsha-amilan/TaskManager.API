@@ -27,40 +27,6 @@ namespace TaskManager.API.Data
 
             context.Users.Add(user);
             context.SaveChanges();
-
-            // Add some sample tasks
-            var tasks = new Models.Task[]
-            {
-                new Models.Task
-                {
-                    Title = "Complete project setup",
-                    Description = "Set up the initial project structure",
-                    IsCompleted = true,
-                    CreatedAt = DateTime.Now.AddDays(-5),
-                    DueDate = DateTime.Now.AddDays(2),
-                    UserId = user.Id
-                },
-                new Models.Task
-                {
-                    Title = "Implement authentication",
-                    Description = "Add user authentication to the API",
-                    IsCompleted = false,
-                    CreatedAt = DateTime.Now.AddDays(-3),
-                    DueDate = DateTime.Now.AddDays(1),
-                    UserId = user.Id
-                },
-                new Models.Task
-                {
-                    Title = "Create UI components",
-                    Description = "Design and implement UI components for the application",
-                    IsCompleted = false,
-                    CreatedAt = DateTime.Now.AddDays(-2),
-                    UserId = user.Id
-                }
-            };
-
-            context.Tasks.AddRange(tasks);
-            context.SaveChanges();
         }
 
         private static string ComputeHash(string password)
@@ -68,7 +34,6 @@ namespace TaskManager.API.Data
             using (SHA256 sha256Hash = SHA256.Create())
             {
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {
