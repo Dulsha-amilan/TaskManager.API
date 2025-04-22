@@ -144,8 +144,8 @@ namespace TaskManager.API.Controllers
         // In a real application, you would get this from the authenticated user
         private int GetUserId()
         {
-            // This would normally come from the authenticated user's claims
-            return 1; // Default admin user from seeded data
+            // This would normally come from the authenticated user's claims but assigment doc not need to jwt authentication but not user idetify
+            return 1; 
         }
     }
 }
